@@ -26,7 +26,10 @@
 #define new DEBUG_NEW
 #endif
 
-
+#define ID_DECREASE_BUTTON	3000
+#define ID_INCREASE_BUTTON	3100
+#define ID_LISTBOX			3200
+#define ID_PROGBAR			3300
 // CSDIView
 
 IMPLEMENT_DYNCREATE(CSDIView, CView)
@@ -157,6 +160,20 @@ int CSDIView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 		CRect(350, 50, 600, 200),
 		this,
 		1020);
+
+	m_Increase_Btn.Create(_T("증가"), WS_VISIBLE, CRect(350, 300, 500, 330),
+		this, ID_INCREASE_BUTTON);
+	m_Decrease_Btn.Create(_T("감소"), WS_VISIBLE, CRect(350, 350, 500, 380),
+		this, ID_DECREASE_BUTTON);
+	
+	m_ListBox.Create(WS_DLGFRAME | WS_VISIBLE, CRect(50, 300, 300, 500),
+		this, ID_LISTBOX);
+	m_ListBox.AddString(_T("윈도우 프로그래밍"));
+
+	m_ProgressBar.Create(WS_DLGFRAME | WS_VISIBLE, CRect(50, 230, 300, 270),
+		this, ID_PROGBAR);
+	m_ProgressBar.SetRange(0, 10);
+	m_ProgressBar.SetPos(1);
 
 	return 0;
 }

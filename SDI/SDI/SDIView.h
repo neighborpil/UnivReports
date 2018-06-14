@@ -30,6 +30,10 @@ public:
 public:
 	CChildWnd m_Wnd01;
 	CChildWnd m_Wnd02;
+	CButton m_Decrease_Btn;
+	CButton m_Increase_Btn;
+	CListBox m_ListBox;
+	CProgressCtrl m_ProgressBar;
 
 // Overrides
 public:
