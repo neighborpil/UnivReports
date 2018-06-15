@@ -62,6 +62,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void CSDIView::OnDecreaseButton();
+	afx_msg void CSDIView::OnIncreaseButton();
 };
 
 #ifndef _DEBUG  // debug version in SDIView.cpp

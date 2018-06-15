@@ -39,12 +39,17 @@ BEGIN_MESSAGE_MAP(CSDIView, CView)
 	ON_COMMAND(ID_FILE_PRINT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CSDIView::OnFilePrintPreview)
+	ON_COMMAND(ID_DECREASE_BUTTON, OnDecreaseButton)
+	ON_COMMAND(ID_INCREASE_BUTTON, OnIncreaseButton)
 	ON_WM_CONTEXTMENU()
 	ON_WM_RBUTTONUP()
 	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 // CSDIView construction/destruction
+
+
+
 
 CSDIView::CSDIView()
 {
@@ -176,4 +181,32 @@ int CSDIView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_ProgressBar.SetPos(1);
 
 	return 0;
+}
+
+void CSDIView::OnDecreaseButton()
+{
+	int count = m_ListBox.GetCount();
+	if (count > 0) 
+	{
+		m_ListBox.DeleteString(count - 1);
+		m_ProgressBar.SetPos(count - 1);
+	}
+	else
+	{
+		AfxMessageBox(_T("지울 아이템이 없습니다"));
+	}
+}
+
+void CSDIView::OnIncreaseButton()
+{
+	int count = m_ListBox.GetCount();
+	if (count < 10)
+	{
+		m_ListBox.AddString(_T("지울 아이템이 없습니다"));
+		m_ProgressBar.SetPos(count+1);
+	}
+	else
+	{
+		AfxMessageBox(_T("더이상 추가 할 수 없습니다"));
+	}
 }
